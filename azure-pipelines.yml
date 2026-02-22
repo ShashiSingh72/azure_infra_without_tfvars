@@ -1,0 +1,33 @@
+trigger: none
+
+pool: Agent pools
+
+# variables:
+#  - name: 
+
+# parameters:
+#   - name: environments
+#     type: string
+#     default: dev
+#     values:
+#       - dev
+#       - test
+#       - prod
+
+stages:
+  - stage: Terraform_plan
+    jobs:
+      - job: Terraform_plan
+        steps:
+        - task: TerraformInstaller@1
+          inputs:
+            terraformVersion: 'latest'
+        - task: TerraformTask@5
+          inputs:
+            provider: 'azurerm'
+            command: 'init'
+            workingDirectory: '$(System.DefaultWorkingDirectory)/environments /dev'
+            backendServiceArm: 'todo-service-connection'
+            backendAzureRmStorageAccountName: 'devstorage7272'
+            backendAzureRmContainerName: 'cont1'
+            backendAzureRmKey: 'dev.terraform.tfstate'
