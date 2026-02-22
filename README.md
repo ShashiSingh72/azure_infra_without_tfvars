@@ -1,0 +1,1 @@
+# azure_infra_without_tfvars
