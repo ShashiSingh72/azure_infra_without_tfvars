@@ -1,6 +1,6 @@
 trigger: none
 
-pool: Agent pools
+pool: TodoAgent
 
 # variables:
 #  - name: 
@@ -27,7 +27,7 @@ stages:
             provider: 'azurerm'
             command: 'init'
             workingDirectory: '$(System.DefaultWorkingDirectory)/environments /dev'
-            backendServiceArm: 'todo-service-connection'
+            backendServiceArm: 'rahu-tanent-svc'
             backendAzureRmStorageAccountName: 'devstorage7272'
             backendAzureRmContainerName: 'cont1'
             backendAzureRmKey: 'dev.terraform.tfstate'
